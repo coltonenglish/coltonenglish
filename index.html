@@ -23,39 +23,22 @@ title: my resume
         <h2 id="contact">Contact</h2>
 
         <ul>
+            <li><a href="tel:{{ resume.contact.phone }}">{{ resume.contact.phone }}</a></li>
+            <li><a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a></li>
             {% for link in resume.contact.links %}
-            <li>{{ link }}</li>
+            <li><a href="{{ link }}">{{ link }}</a></li>
             {% endfor %}
         </ul>
-
+    </header>
+    <main>
         <h2 id="summary">Summary</h2>
 
         {{ resume.summary | markdownify }}
-    </header>
-    <main>
-        <h3 id="languages">Languages:</h3>
 
-        <p>Java, JavaScript, TypeScript, Bash</p>
-
-        <h3 id="tools">Tools:</h3>
-
-        <p>Linux/Unix (CentOS &amp; AIX), Eclipse, Jira/Confluence, Jenkins/Bamboo/GitHub Actions, Git, Subversion,
-            Visual
-            Studio, OwnCloud, ServiceNow, FreeIPA</p>
-
-        <h3 id="librariesframeworks">Libraries/Frameworks:</h3>
-
-        <h4 id="java">Java:</h4>
-
-        <p>Spring, JAX-WS, JAX-RS (Jersey), Hibernate, Junit 4/5</p>
-
-        <h4 id="javascript">JavaScript:</h4>
-
-        <p>React, Svelte, Vue, Node.js, TestCafe</p>
-
-        <h4 id="jee-containers">JEE Containers:</h4>
-
-        <p>Glassfish, Tomcat, Weblogic</p>
+        {% for term in resume.buzzwords %}
+        <h3 id="{{ term.title | slugify }}">{{ term.title }}</h3>
+        {{ term.values | array_to_sentence_string | markdownify }}
+        {% endfor %}
 
         <h2 id="experience">Experience</h2>
 
