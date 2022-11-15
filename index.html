@@ -15,8 +15,193 @@ title: my resume
 </head>
 
 <body>
-    {% capture readme %} {% include_relative README.md %} {% endcapture %}
-    {{ readme | markdownify }}
+    {% assign resume = site.data.resume %}
+    <h1 id="colton-english">{{ resume.contact.name }}</h1>
+
+    <h2 id="contact">Contact</h2>
+
+    <ul>
+        {% for link in resume.contact.links %}
+        <li>{{ link }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2 id="summary">Summary</h2>
+
+    {{ resume.summary | markdownify }}
+
+    <h3 id="languages">Languages:</h3>
+
+    <p>Java, JavaScript, TypeScript, Bash</p>
+
+    <h3 id="tools">Tools:</h3>
+
+    <p>Linux/Unix (CentOS &amp; AIX), Eclipse, Jira/Confluence, Jenkins/Bamboo/GitHub Actions, Git, Subversion, Visual
+        Studio, OwnCloud, ServiceNow, FreeIPA</p>
+
+    <h3 id="librariesframeworks">Libraries/Frameworks:</h3>
+
+    <h4 id="java">Java:</h4>
+
+    <p>Spring, JAX-WS, JAX-RS (Jersey), Hibernate, Junit 4/5</p>
+
+    <h4 id="javascript">JavaScript:</h4>
+
+    <p>React, Svelte, Vue, Node.js, TestCafe</p>
+
+    <h4 id="jee-containers">JEE Containers:</h4>
+
+    <p>Glassfish, Tomcat, Weblogic</p>
+
+    <h2 id="experience">Experience</h2>
+
+    <h3 id="senior-software-developer">Senior Software Developer</h3>
+
+    <h4 id="reach">Reach</h4>
+
+    <p>Apr 2022 - Oct 2022 (7 months)</p>
+
+    <h5 id="accomplishments">Accomplishments</h5>
+
+    <ul>
+        <li>Initiated &amp; completed a project to migration message brokers reducing PaaS costs by $150K year-
+            over-year.</li>
+        <li>Implemented cloud observability and tracing into all microservices.</li>
+        <li>Worked with leadership to refine the scope and deliverables for a commerce plugin. Worked with the team to
+            deliver the plugin.</li>
+    </ul>
+
+    <h5 id="role-description">Role Description</h5>
+
+    <ul>
+        <li>Work with management architect and leadership to identify and refine project scope.</li>
+        <li>Support and maintain a drop in web component (JS library) which facilitates payment capture in a PCI
+            compliant manner.</li>
+        <li>Implement new features in a timely manner.</li>
+    </ul>
+
+    <h3 id="senior-software-developer-1">Senior Software Developer</h3>
+
+    <h4 id="appdirect">AppDirect</h4>
+
+    <p>May 2021 - Apr 2022 (1 year)</p>
+
+    <ul>
+        <li>Provide support of a hybrid monolith &amp; microservices environment.</li>
+        <li>Feature development in a legacy environment with an emphasis on providing feature parity within 3 competing
+            UI frameworks</li>
+    </ul>
+
+    <h3 id="technical-team-lead">Technical Team Lead</h3>
+
+    <h4 id="paysafe-group">Paysafe Group</h4>
+
+    <p>Jan 2020 - Apr 2021 (1 year 4 months)</p>
+
+    <h5 id="accomplishments-1">Accomplishments</h5>
+
+    <ul>
+        <li>Identified and resolved major risks with key business goal by assuming product leader role</li>
+        <li>Reduced support costs by identifying and deprecating value loss applications &amp; services</li>
+        <li>Reduced number of production bugs by intervening and escalating during code review phase</li>
+    </ul>
+
+    <h5 id="role-description-1">Role Description</h5>
+
+    <ul>
+        <li>Provide support and leadership to a team consisting of primarily junior developers</li>
+        <li>Documenting/improving software development processes</li>
+        <li>Collaborating with product owner and team members to define project scopes and timelines (both scrum and
+            through ad hoc meetings)</li>
+        <li>Work with senior technical leadership (architects, departement managers) in order ensure continual
+            improvement</li>
+        <li>Work with senior technical leadership to define best practices or areas for improvement</li>
+    </ul>
+
+    <h3 id="software-developer">Software Developer</h3>
+
+    <h4 id="paysafe-group-1">Paysafe Group</h4>
+
+    <p>Mar 2017 - Jan 2020 (2 years 11 months)</p>
+
+    <h5 id="accomplishments-2">Accomplishments</h5>
+
+    <ul>
+        <li>Reduced onboarding overhead by documenting the onboarding process and developing scripts to allow automated
+            onboarding of new developers</li>
+        <li>Reduced delivery costs by negating the removal of features not requested by business/customers (nice to
+            have)</li>
+        <li>Identified and documented resolution of a long outstanding infrastructural bug which caused persistent HTTP
+            connections to be dropped</li>
+        <li>Worked with test developers to identify, remove, and replace flaky tests by defining and implementing more
+            robust unit testing strategy by ensuring <em>units</em> of code had a consistent contract</li>
+    </ul>
+
+    <h5 id="role-description-2">Role Description</h5>
+
+    <ul>
+        <li>Support more than 17 microservices including 11+ production applications &amp; 6+ test applications</li>
+        <li>Maintain, support, and document legacy applications</li>
+        <li>Provide proactive feedback to team from design through code review and deployment in order to ensure
+            high-quality, stable consistent releases.</li>
+    </ul>
+
+    <h3 id="programmer-analyst">Programmer Analyst</h3>
+
+    <h4 id="tervita-corporation">Tervita Corporation</h4>
+
+    <p>May 2012 - Oct 2016 (4 years 6 months)</p>
+
+    <h5 id="accomplishments-3">Accomplishments</h5>
+
+    <ul>
+        <li>Deployed a continuous integration environment and streamlined the build process reducing production
+            deployment times from 8 hours to 1 hour (Jenkins w/Maven &amp; Ant)</li>
+        <li>Developed a unit testing processing reducing test windows from 1 week to 2 days.</li>
+        <li>Deployed a centralized logging system to increase visibility into business critical systems</li>
+        <li>Architected a functional web service security policy for senior IT leadership at Tervita</li>
+    </ul>
+
+    <h5 id="role-description-3">Role Description</h5>
+
+    <ul>
+        <li>Supported various applications in a heterogeneous environment (AIX, Windows, Linux)</li>
+        <li>Developed and maintained legacy applications written in C# .NET, new applications written in Java, and
+            Oracle Fusion Middleware SOA applications</li>
+        <li>Collaborated with business analysts and product owners to identify and develop new functionality including
+            sections of a customer facing portal</li>
+        <li>Participated in scrums, sprint planning, retrospectives as part of an agile team</li>
+        <li>Maintained various build tools (Jenkins/Sonatype Nexus/Maven/Ant)</li>
+        <li>Provided and facilitated knowledge transfer among team members</li>
+        <li>Coordinated and facilitated support with third party contractors/consultants</li>
+        <li>Built and maintained environment templates for each of the applications supported</li>
+        <li>Documented and coordinated changes across multiple teams</li>
+    </ul>
+
+    <h3 id="software-development-practicum">Software Development (Practicum)</h3>
+
+    <h4 id="red-deer-public-school-district">Red Deer Public School District</h4>
+
+    <p>2011 - 2011 (1 year)</p>
+
+    <h5 id="role-description-4">Role Description</h5>
+
+    <p>Designing and developing a new Financial Management System to replace the legacy OpenVMS based FMS.</p>
+
+    <h2 id="education">Education</h2>
+
+    <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
+
+    <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
+
+    <p>2009 - 2011</p>
+
+    <h3 id="computer-science">Computer Science</h3>
+
+    <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
+
+    <p>2011 - 2012</p>
+
 </body>
 
 </html>
