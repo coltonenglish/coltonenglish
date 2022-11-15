@@ -35,7 +35,7 @@ title: my resume
 
         {{ resume.summary | markdownify }}
 
-        {% for term in resume.buzzwords %}
+        {% for term in resume.keyterms %}
         <h3 id="{{ term.title | slugify }}">{{ term.title }}</h3>
         {{ term.values | array_to_sentence_string | markdownify }}
         {% endfor %}
