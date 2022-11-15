@@ -11,6 +11,7 @@ title: my resume
     <title>{{ title }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="main.css" media="print">
     <script src='main.js'></script>
 </head>
 
@@ -18,10 +19,7 @@ title: my resume
     {% assign resume = site.data.resume %}
 
     <header>
-        <h1 id="colton-english">{{ resume.contact.name }}</h1>
-
-        <h2 id="contact">Contact</h2>
-
+        <h1 id="name">{{ resume.contact.name }}</h1>
         <ul>
             <li><a href="tel:{{ resume.contact.phone }}">{{ resume.contact.phone }}</a></li>
             <li><a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a></li>
@@ -36,37 +34,40 @@ title: my resume
         {{ resume.summary | markdownify }}
 
         {% for term in resume.keyterms %}
-        <h3 id="{{ term.title | slugify }}">{{ term.title }}</h3>
+        <h3 id="{{ term.title | slugify }}" data-language="{{ term.class }}">{{ term.title }}</h3>
         {{ term.values | array_to_sentence_string | markdownify }}
         {% endfor %}
 
         <h2 id="experience">Experience</h2>
 
-        {% for role in resume.experience %}
-        <h3>{{ role.title }}</h3>
-        <h4>{{ role.company }}</h4>
-        <p class="date">{{ role.period }}</p>
-        {% for item in role.accomplishments %}
-        {% if forloop.first %}
-        <h5>Accomplishments</h5>
-        <ul>
-            {% endif %}
-            <li>{{item}}</li>
-            {% if forloop.last %}
-        </ul>
-        {% endif %}
-        {% endfor %}
-        {% for item in role.description %}
-        {% if forloop.first %}
-        <h5>Role Description</h5>
-        <ul>
-            {% endif %}
-            <li>{{item}}</li>
-            {% if forloop.last %}
-        </ul>
-        {% endif %}
-        {% endfor %}
-        {% endfor %}
+        <div class="roles">
+            {% for role in resume.experience %}
+            <div class="role">
+                <h3>{{ role.title }}</h3> <p class="date">| {{ role.period }}</p>
+                <h4>{{ role.company }}</h4>
+                {% for item in role.accomplishments %}
+                {% if forloop.first %}
+                <h5>Accomplishments</h5>
+                <ul>
+                    {% endif %}
+                    <li>{{item}}</li>
+                    {% if forloop.last %}
+                </ul>
+                {% endif %}
+                {% endfor %}
+                {% for item in role.description %}
+                {% if forloop.first %}
+                <h5>Role Description</h5>
+                <ul>
+                    {% endif %}
+                    <li>{{item}}</li>
+                    {% if forloop.last %}
+                </ul>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
 
         <h2 id="education">Education</h2>
 
