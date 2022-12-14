@@ -13,6 +13,13 @@ header ul {
     list-style: none;
 }
 
+
+@media (hover: none) {
+    header ul>li {
+        margin-bottom: 0.5em;
+    }
+}
+
 /* emulate paper margins */
 @media screen and (min-width: 8in) {
     body {
@@ -21,10 +28,12 @@ header ul {
     }
 }
 
-.role > h3, .role > p {
+.role>h3,
+.role>p {
     display: inline;
 }
-.role > .date {
+
+.role>.date {
     font-size: 1em;
     font-weight: lighter;
 }
