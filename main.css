@@ -52,6 +52,9 @@ div.role {
 }
 
 @media print {
+    a, a:visited{
+        color: black;
+    }
     #profiles {
         display: none;
     }
