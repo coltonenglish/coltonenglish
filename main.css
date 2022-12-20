@@ -20,7 +20,8 @@ header ul {
     }
 }
 
-@media screen and (min-width: 525px), print {
+@media screen and (min-width: 525px),
+print {
     .role>.date::before {
         content: '| ';
     }
@@ -32,7 +33,7 @@ header ul {
 }
 
 @media not screen and (min-width: 525px) {
-    .role>.date{
+    .role>.date {
         margin-top: -1em;
     }
 }
@@ -59,8 +60,15 @@ div.role {
 /* emulate paper margins */
 @media screen and (min-width: 8in) {
     body {
+        background-color: #6699cc;
+    }
+
+    article {
+        background-color: white;
         max-width: 8in;
         margin: auto;
+        padding: 2em;
+        box-shadow: 10px 5px 5px black;
     }
 }
 

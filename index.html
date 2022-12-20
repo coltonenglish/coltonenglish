@@ -19,77 +19,78 @@ title: Colton English - Resume
 </head>
 
 <body>
-    {% assign resume = site.data.resume %}
-
-    <header>
-        <h1 id="name">{{ resume.contact.name }}</h1>
-        <ul>
-            <li><a href="tel:{{ resume.contact.phone }}">{{ resume.contact.phone }}</a></li>
-            <li><a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a></li>
-            {% for link in resume.contact.links %}
-            <li><a href="https://{{ link }}">{{ link }}</a></li>
-            {% endfor %}
-        </ul>
-    </header>
-    <main>
-        <h2 id="summary">Summary</h2>
-
-        {{ resume.summary | markdownify }}
-
-        {% for term in resume.keyterms %}
-        <h3 id="{{ term.title | slugify }}" data-language="{{ term.class }}">{{ term.title }}</h3>
-        {{ term.values | array_to_sentence_string | markdownify }}
-        {% endfor %}
-
-        <div id="roles">
-            <h2>Experience</h2>
-
-            {% for role in resume.experience %}
-            <div class="role">
-                <h3>{{ role.title }}</h3>
-                <p class="date">{{ role.period }}</p>
-                <h4>{{ role.company }}</h4>
-                {% for item in role.accomplishments %}
-                {% if forloop.first %}
-                <h5>Accomplishments</h5>
-                <ul>
-                    {% endif %}
-                    <li>{{item}}</li>
-                    {% if forloop.last %}
-                </ul>
-                {% endif %}
+    <article>
+        {% assign resume = site.data.resume %}
+        <header>
+            <h1 id="name">{{ resume.contact.name }}</h1>
+            <ul>
+                <li><a href="tel:{{ resume.contact.phone }}">{{ resume.contact.phone }}</a></li>
+                <li><a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a></li>
+                {% for link in resume.contact.links %}
+                <li><a href="https://{{ link }}">{{ link }}</a></li>
                 {% endfor %}
-                {% for item in role.description %}
-                {% if forloop.first %}
-                <h5>Role Description</h5>
-                <ul>
+            </ul>
+        </header>
+        <main>
+            <h2 id="summary">Summary</h2>
+
+            {{ resume.summary | markdownify }}
+
+            {% for term in resume.keyterms %}
+            <h3 id="{{ term.title | slugify }}" data-language="{{ term.class }}">{{ term.title }}</h3>
+            {{ term.values | array_to_sentence_string | markdownify }}
+            {% endfor %}
+
+            <div id="roles">
+                <h2>Experience</h2>
+
+                {% for role in resume.experience %}
+                <div class="role">
+                    <h3>{{ role.title }}</h3>
+                    <p class="date">{{ role.period }}</p>
+                    <h4>{{ role.company }}</h4>
+                    {% for item in role.accomplishments %}
+                    {% if forloop.first %}
+                    <h5>Accomplishments</h5>
+                    <ul>
+                        {% endif %}
+                        <li>{{item}}</li>
+                        {% if forloop.last %}
+                    </ul>
                     {% endif %}
-                    <li>{{item}}</li>
-                    {% if forloop.last %}
-                </ul>
-                {% endif %}
+                    {% endfor %}
+                    {% for item in role.description %}
+                    {% if forloop.first %}
+                    <h5>Role Description</h5>
+                    <ul>
+                        {% endif %}
+                        <li>{{item}}</li>
+                        {% if forloop.last %}
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
+                </div>
                 {% endfor %}
             </div>
-            {% endfor %}
-        </div>
 
-        <div id="education">
-            <h2>Education</h2>
+            <div id="education">
+                <h2>Education</h2>
 
-            <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
+                <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
 
-            <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
+                <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
 
-            <p>2009 - 2011</p>
+                <p>2009 - 2011</p>
 
-            <h3 id="computer-science">Computer Science</h3>
+                <h3 id="computer-science">Computer Science</h3>
 
-            <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
-        </div>
-        <p>2011 - 2012</p>
-    </main>
-    <footer>
-    </footer>
+                <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
+            </div>
+            <p>2011 - 2012</p>
+        </main>
+        <footer>
+        </footer>
+    </article>
 </body>
 
 </html>
