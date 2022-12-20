@@ -10,9 +10,13 @@ title: Colton English - Resume
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>{{ page.title }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" media="none" onload="if(media!=='all')media='all'" />
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel="stylesheet" href="main.css" media="print">
-    <script src='main.js'></script>
+    <script src='main.js' defer></script>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
 
 <body>
@@ -38,12 +42,13 @@ title: Colton English - Resume
         {{ term.values | array_to_sentence_string | markdownify }}
         {% endfor %}
 
-        <h2 id="experience">Experience</h2>
+        <div id="roles">
+            <h2>Experience</h2>
 
-        <div class="roles">
             {% for role in resume.experience %}
             <div class="role">
-                <h3>{{ role.title }}</h3> <p class="date">| {{ role.period }}</p>
+                <h3>{{ role.title }}</h3>
+                <p class="date">| {{ role.period }}</p>
                 <h4>{{ role.company }}</h4>
                 {% for item in role.accomplishments %}
                 {% if forloop.first %}
@@ -69,20 +74,28 @@ title: Colton English - Resume
             {% endfor %}
         </div>
 
-        <h2 id="education">Education</h2>
+        <div id="education">
+            <h2>Education</h2>
 
-        <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
+            <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
 
-        <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
+            <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
 
-        <p>2009 - 2011</p>
+            <p>2009 - 2011</p>
 
-        <h3 id="computer-science">Computer Science</h3>
+            <h3 id="computer-science">Computer Science</h3>
 
-        <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
-
+            <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
+        </div>
         <p>2011 - 2012</p>
+        <div id="profiles">
+            <h2>Public Profiles</h2>
+            <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light"
+                data-type="VERTICAL" data-vanity="sparksis" data-version="v1"></div>
+        </div>
     </main>
+    <footer>
+    </footer>
 </body>
 
 </html>

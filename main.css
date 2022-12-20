@@ -20,14 +20,6 @@ header ul {
     }
 }
 
-/* emulate paper margins */
-@media screen and (min-width: 8in) {
-    body {
-        max-width: 8in;
-        margin: auto;
-    }
-}
-
 .role>h3,
 .role>p {
     display: inline;
@@ -40,4 +32,27 @@ header ul {
 
 div.role {
     break-inside: avoid-page;
+}
+
+#profiles h2::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+    content: '\f2bd';
+    filter: grayscale();
+}
+
+/* emulate paper margins */
+@media screen and (min-width: 8in) {
+    body {
+        max-width: 8in;
+        margin: auto;
+    }
+}
+
+@media print {
+    .profiles {
+        display: none;
+    }
 }
