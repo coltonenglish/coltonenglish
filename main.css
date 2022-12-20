@@ -58,7 +58,7 @@ div.role {
 }
 
 /* emulate paper margins */
-@media screen and (min-width: 8in) {
+@media screen and (min-width: calc(8in + 4em + 10px)) {
     body {
         background-color: #6699cc;
     }
