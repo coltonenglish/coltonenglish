@@ -20,10 +20,23 @@ header ul {
     }
 }
 
-.role>h3,
-.role>p {
-    display: inline;
+@media screen and (min-width: 525px), print {
+    .role>.date::before {
+        content: '| ';
+    }
+
+    .role>h3,
+    .role>.date {
+        display: inline;
+    }
 }
+
+@media not screen and (min-width: 525px) {
+    .role>.date{
+        margin-top: -1em;
+    }
+}
+
 
 .role>.date {
     font-size: 1em;
@@ -52,9 +65,12 @@ div.role {
 }
 
 @media print {
-    a, a:visited{
+
+    a,
+    a:visited {
         color: black;
     }
+
     #profiles {
         display: none;
     }

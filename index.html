@@ -47,7 +47,7 @@ title: Colton English - Resume
             {% for role in resume.experience %}
             <div class="role">
                 <h3>{{ role.title }}</h3>
-                <p class="date">| {{ role.period }}</p>
+                <p class="date">{{ role.period }}</p>
                 <h4>{{ role.company }}</h4>
                 {% for item in role.accomplishments %}
                 {% if forloop.first %}
