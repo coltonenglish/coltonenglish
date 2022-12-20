@@ -58,18 +58,29 @@ div.role {
 }
 
 /* emulate paper margins */
-@media screen and (min-width: calc(8in + 4em + 10px)) {
+@media screen and (min-width: calc(8in + 10px)) {
     body {
         background-color: #6699cc;
     }
 
     article {
         background-color: white;
-        max-width: 8in;
+        max-width: calc(8in - 4em - 10px);
         margin: auto;
         padding: 2em;
         box-shadow: 10px 5px 5px black;
     }
+
+    hr {
+        display: none;
+    }
+}
+
+nav {
+    text-align: right;
+    margin: 0px;
+    margin-top: 1em;
+    width: 100%;
 }
 
 @media print {
