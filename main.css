@@ -52,7 +52,7 @@ div.role {
 }
 
 @media print {
-    .profiles {
+    #profiles {
         display: none;
     }
 }
