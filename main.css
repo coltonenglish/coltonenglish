@@ -90,7 +90,7 @@ nav {
         color: black;
     }
 
-    #profiles {
+    #profiles, nav {
         display: none;
     }
 }
