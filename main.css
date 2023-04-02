@@ -14,13 +14,13 @@ header ul {
 }
 
 
-@media (hover: none) {
+@media (pointer: coarse) {
     header ul>li {
         margin-bottom: 0.5em;
     }
 }
 
-@media screen and (min-width: 525px),
+@media screen and (min-width: 425px),
 print {
     .role>.date::before {
         content: '| ';
@@ -32,7 +32,7 @@ print {
     }
 }
 
-@media not screen and (min-width: 525px) {
+@media not screen and (min-width: 425px) {
     .role>.date {
         margin-top: -1em;
     }
