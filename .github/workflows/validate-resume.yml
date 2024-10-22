@@ -32,7 +32,7 @@ jobs:
           require 'json-schema'
           require 'yaml'
 
-          schema = JSON.parse(File.read('https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json'))
+          schema = JSON.parse(File.read('schema/json-resume-schema.json'))
           resume = YAML.load_file('_data/resume.yaml')
 
           JSON::Validator.validate!(schema, resume)
