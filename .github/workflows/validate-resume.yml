@@ -26,4 +26,4 @@ jobs:
 
       - name: Validate resume.yaml
         run: |
-          ajv validate -s schema/json-resume-schema.json -d _data/resume.yaml
+          ajv validate -s https://json-schema.org/draft-07/schema -d _data/resume.yaml
