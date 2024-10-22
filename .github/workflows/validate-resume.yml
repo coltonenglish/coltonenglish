@@ -16,24 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          ruby-version: '3.0'
+          node-version: 'lts/*'
 
-      - name: Install dependencies
-        run: |
-          gem install json-schema
-          gem install yaml
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli
 
       - name: Validate resume.yaml
         run: |
-          ruby -e "
-          require 'json-schema'
-          require 'yaml'
-
-          schema = JSON.parse(File.read('schema/json-resume-schema.json'))
-          resume = YAML.load_file('_data/resume.yaml')
-
-          JSON::Validator.validate!(schema, resume)
-          "
+          ajv validate -s schema/json-resume-schema.json -d _data/resume.yaml
