@@ -41,7 +41,7 @@ title: Colton English - Resume
         <main>
             <h2 id="summary">Summary</h2>
 
-            {{ resume.summary | markdownify }}
+            {{ resume.basics.summary | markdownify }}
 
             {% for skill in resume.skills %}
             <h3 id="{{ skill.name | slugify }}" data-language="{{ skill.level }}">{{ skill.name }}</h3>
