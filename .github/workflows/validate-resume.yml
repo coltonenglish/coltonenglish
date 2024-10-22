@@ -1,0 +1,39 @@
+name: Validate Resume
+
+on:
+  push:
+    paths:
+      - '_data/resume.yaml'
+  pull_request:
+    paths:
+      - '_data/resume.yaml'
+
+jobs:
+  validate-resume:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      - name: Install dependencies
+        run: |
+          gem install json-schema
+          gem install yaml
+
+      - name: Validate resume.yaml
+        run: |
+          ruby -e "
+          require 'json-schema'
+          require 'yaml'
+
+          schema = JSON.parse(File.read('path/to/json-resume-schema.json'))
+          resume = YAML.load_file('_data/resume.yaml')
+
+          JSON::Validator.validate!(schema, resume)
+          "

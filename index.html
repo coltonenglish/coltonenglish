@@ -29,12 +29,12 @@ title: Colton English - Resume
     <article>
         {% assign resume = site.data.resume %}
         <header>
-            <h1 id="name">{{ resume.contact.name }}</h1>
+            <h1 id="name">{{ resume.basics.name }}</h1>
             <ul>
-                <li><a href="tel:{{ resume.contact.phone }}">{{ resume.contact.phone }}</a></li>
-                <li><a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a></li>
-                {% for link in resume.contact.links %}
-                <li><a href="https://{{ link }}">{{ link }}</a></li>
+                <li><a href="tel:{{ resume.basics.phone }}">{{ resume.basics.phone }}</a></li>
+                <li><a href="mailto:{{ resume.basics.email }}">{{ resume.basics.email }}</a></li>
+                {% for profile in resume.basics.profiles %}
+                <li><a href="{{ profile.url }}">{{ profile.network }}</a></li>
                 {% endfor %}
             </ul>
         </header>
@@ -43,39 +43,29 @@ title: Colton English - Resume
 
             {{ resume.summary | markdownify }}
 
-            {% for term in resume.keyterms %}
-            <h3 id="{{ term.title | slugify }}" data-language="{{ term.class }}">{{ term.title }}</h3>
-            {{ term.values | array_to_sentence_string | markdownify }}
+            {% for skill in resume.skills %}
+            <h3 id="{{ skill.name | slugify }}" data-language="{{ skill.level }}">{{ skill.name }}</h3>
+            {{ skill.keywords | array_to_sentence_string | markdownify }}
             {% endfor %}
 
-            <div id="roles">
+            <div id="work">
                 <h2>Experience</h2>
 
-                {% for role in resume.experience %}
+                {% for job in resume.work %}
                 <div class="role">
-                    <h3>{{ role.title }}</h3>
-                    <p class="date">{{ role.period }}</p>
-                    <h4>{{ role.company }}</h4>
-                    {% for item in role.accomplishments %}
-                    {% if forloop.first %}
-                    <h5>Accomplishments</h5>
+                    <h3>{{ job.position }}</h3>
+                    <p class="date">{{ job.startDate }} - {{ job.endDate }}</p>
+                    <h4>{{ job.name }}</h4>
+                    {% if job.highlights %}
+                    <h5>Highlights</h5>
                     <ul>
-                        {% endif %}
-                        <li>{{item}}</li>
-                        {% if forloop.last %}
+                        {% for highlight in job.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
                     </ul>
                     {% endif %}
-                    {% endfor %}
-                    {% for item in role.description %}
-                    {% if forloop.first %}
-                    <h5>Role Description</h5>
-                    <ul>
-                        {% endif %}
-                        <li>{{item}}</li>
-                        {% if forloop.last %}
-                    </ul>
-                    {% endif %}
-                    {% endfor %}
+                    <h5>Summary</h5>
+                    <p>{{ job.summary }}</p>
                 </div>
                 {% endfor %}
             </div>
@@ -83,17 +73,14 @@ title: Colton English - Resume
             <div id="education">
                 <h2>Education</h2>
 
-                <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
-
-                <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
-
-                <p>2009 - 2011</p>
-
-                <h3 id="computer-science">Computer Science</h3>
-
-                <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
+                {% for education in resume.education %}
+                <div class="education">
+                    <h3>{{ education.studyType }}</h3>
+                    <h4>{{ education.institution }}</h4>
+                    <p>{{ education.startDate }} - {{ education.endDate }}</p>
+                </div>
+                {% endfor %}
             </div>
-            <p>2011 - 2012</p>
         </main>
         <footer>
         </footer>
