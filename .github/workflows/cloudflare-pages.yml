@@ -1,0 +1,28 @@
+name: Deploy Next.js site to Cloudflare Pages
+
+on: [push]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    environment:
+      name: cloudflare
+      url: ${{steps.deploy.outputs.deployment-url}}
+    name: Publish to Cloudflare Pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker://jekyll/jekyll:latest
+        with:
+          entrypoint: /github/workspace/bin/build.sh
+      - name: Publish to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        env:
+          NPM_CONFIG_YES: true
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 62758afcaaf5e929beeac70e72312bc6
+          command: pages deploy _site --project-name coltonenglish --commit-dirty=true
