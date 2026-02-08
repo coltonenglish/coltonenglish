@@ -6,9 +6,12 @@ ruby --version
 
 # Required due to some file permission issue
 mkdir -p _site .jekyll-cache
+chmod -R 777 .jekyll-cache _site || true
 
 # Install dependencies if Gemfile exists
 if [ -f "Gemfile" ]; then
+  # Ensure we can write to Gemfile.lock
+  chmod 666 Gemfile.lock || true
   bundle install
 fi
 
