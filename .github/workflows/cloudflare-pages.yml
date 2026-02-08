@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Cloudflare Pages
+name: Deploy Jekyll site to Cloudflare Pages
 
 on: [push]
 
@@ -14,7 +14,7 @@ jobs:
     name: Publish to Cloudflare Pages
     steps:
       - uses: actions/checkout@v4
-      - uses: docker://jekyll/jekyll:pages
+      - uses: docker://jekyll/builder:latest
         with:
           entrypoint: /github/workspace/bin/build.sh
       - name: Publish to Cloudflare Pages

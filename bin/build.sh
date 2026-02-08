@@ -1,11 +1,20 @@
 #!/bin/bash
+set -e
 
+# Ruby version for debugging
 ruby --version
 
-mkdir -p _site .jekyll-cache  # Required due to some file permission issue
+# Required due to some file permission issue
+mkdir -p _site .jekyll-cache
 
+# Install dependencies if Gemfile exists
+if [ -f "Gemfile" ]; then
+  bundle install
+fi
+
+# Determine if we should build drafts
 if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
-  jekyll build
+  bundle exec jekyll build
 else
-  jekyll build --drafts $@
+  bundle exec jekyll build --drafts
 fi
