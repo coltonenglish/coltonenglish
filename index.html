@@ -29,53 +29,48 @@ title: Colton English - Resume
     <article>
         {% assign resume = site.data.resume %}
         <header>
-            <h1 id="name">{{ resume.contact.name }}</h1>
+            <h1 id="name">{{ resume.basics.name }}</h1>
             <ul>
-                <li><a href="tel:{{ resume.contact.phone }}">{{ resume.contact.phone }}</a></li>
-                <li><a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a></li>
-                {% for link in resume.contact.links %}
-                <li><a href="https://{{ link }}">{{ link }}</a></li>
+                <li><a href="tel:{{ resume.basics.phone }}">{{ resume.basics.phone }}</a></li>
+                <li><a href="mailto:{{ resume.basics.email }}">{{ resume.basics.email }}</a></li>
+                {% if resume.basics.url %}
+                <li><a href="{{ resume.basics.url }}">{{ resume.basics.url | remove: 'https://' | remove: 'http://' }}</a></li>
+                {% endif %}
+                {% for profile in resume.basics.profiles %}
+                <li><a href="{{ profile.url }}">{{ profile.url | remove: 'https://' | remove: 'http://' }}</a></li>
                 {% endfor %}
             </ul>
         </header>
         <main>
             <h2 id="summary">Summary</h2>
 
-            {{ resume.summary | markdownify }}
+            {{ resume.basics.summary | markdownify }}
 
-            {% for term in resume.keyterms %}
-            <h3 id="{{ term.title | slugify }}" data-language="{{ term.class }}">{{ term.title }}</h3>
-            {{ term.values | array_to_sentence_string | markdownify }}
+            {% for skill in resume.skills %}
+            <h3 id="{{ skill.name | slugify }}" data-language="{{ skill.class }}">{{ skill.name }}</h3>
+            {{ skill.keywords | array_to_sentence_string | markdownify }}
             {% endfor %}
 
             <div id="roles">
                 <h2>Experience</h2>
 
-                {% for role in resume.experience %}
+                {% for role in resume.work %}
                 <div class="role">
-                    <h3>{{ role.title }}</h3>
-                    <p class="date">{{ role.period }}</p>
-                    <h4>{{ role.company }}</h4>
-                    {% for item in role.accomplishments %}
-                    {% if forloop.first %}
+                    <h3>{{ role.position }}</h3>
+                    <p class="date">{{ role.startDate | date: "%b %Y" }} - {{ role.endDate | date: "%b %Y" | default: 'Present' }}</p>
+                    <h4>{{ role.name }}</h4>
+                    {% if role.highlights.size > 0 %}
                     <h5>Accomplishments</h5>
                     <ul>
-                        {% endif %}
-                        <li>{{item}}</li>
-                        {% if forloop.last %}
+                        {% for item in role.highlights %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
                     </ul>
                     {% endif %}
-                    {% endfor %}
-                    {% for item in role.description %}
-                    {% if forloop.first %}
+                    {% if role.summary %}
                     <h5>Role Description</h5>
-                    <ul>
-                        {% endif %}
-                        <li>{{item}}</li>
-                        {% if forloop.last %}
-                    </ul>
+                    {{ role.summary | markdownify }}
                     {% endif %}
-                    {% endfor %}
                 </div>
                 {% endfor %}
             </div>
@@ -83,17 +78,14 @@ title: Colton English - Resume
             <div id="education">
                 <h2>Education</h2>
 
-                <h3 id="computer-information-systems-diploma">Computer Information Systems Diploma</h3>
+                {% for edu in resume.education %}
+                <h3 id="{{ edu.area | slugify }}{% if edu.studyType %}-{{ edu.studyType | slugify }}{% endif %}">{{ edu.area }}{% if edu.studyType %} {{ edu.studyType }}{% endif %}</h3>
 
-                <h4 id="red-deer-polytechnic">Red Deer Polytechnic</h4>
+                <h4 id="{{ edu.institution | slugify }}">{{ edu.institution }}</h4>
 
-                <p>2009 - 2011</p>
-
-                <h3 id="computer-science">Computer Science</h3>
-
-                <h4 id="the-university-of-lethbridge">The University of Lethbridge</h4>
+                <p>{{ edu.startDate | date: "%Y" }} - {{ edu.endDate | date: "%Y" | default: 'Present' }}</p>
+                {% endfor %}
             </div>
-            <p>2011 - 2012</p>
         </main>
         <footer>
         </footer>
