@@ -4,8 +4,10 @@ ruby --version
 
 mkdir -p _site .jekyll-cache  # Required due to some file permission issue
 
+bundle exec ./bin/validate_resume.rb
+
 if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
-  jekyll build
+  bundle exec jekyll build
 else
-  jekyll build --drafts $@
+  bundle exec jekyll build --drafts $@
 fi
