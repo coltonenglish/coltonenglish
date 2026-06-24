@@ -1,3 +1,4 @@
+$schema: https://raw.githubusercontent.com/jsonresume/jsonresume.org/refs/heads/master/packages/schema/schema.json
 basics:
   name: Colton English
   label: Senior Software Developer
